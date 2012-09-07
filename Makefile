@@ -16,8 +16,8 @@ CXX    = $(NACL_GCC_PREFIX)g++ -c
 
 O32      = o32
 O64      = o64
-NEXE_64        = ../$(NAME)_64.nexe
-NEXE_32        = ../$(NAME)_32.nexe
+NEXE_64        = $(NAME)_64.nexe
+NEXE_32        = $(NAME)_32.nexe
 
 all: $(NEXE_64) $(NEXE_32)
 
@@ -31,22 +31,22 @@ NEXE64_LIBS=-lbulletml64
 MORE_CFLAGS = -O3
 
 CFLAGS  = $(MORE_CFLAGS)
-CPPFLAGS  = $(MORE_CFLAGS) -I. -I$(BULLETML) -I$(BULLETML)/src
+CPPFLAGS  = $(MORE_CFLAGS) -I./src -I$(BULLETML) -I$(BULLETML)/src
 
 LDFLAGS        =  -L. -L$(BULLETML)/src
 LIBS=-lSDL_mixer -lSDL -lnosys -lvorbis -lvorbisfile -lvorbisenc -lvorbis -logg -lstdc++ -lppapi -lppapi_cpp -lm
 
-OBJS_32 =	$(NAME).$(O32) ship.$(O32) shot.$(O32) frag.$(O32) bonus.$(O32) \
-	foe.$(O32) foecommand.$(O32) barragemanager.$(O32) attractmanager.$(O32) \
-	background.$(O32) letterrender.$(O32) \
-	screen.$(O32) clrtbl.$(O32) vector.$(O32) degutil.$(O32) rand.$(O32) soundmanager.$(O32) \
-	nativeclient.$(O32)
+OBJS_32 =	src/$(NAME).$(O32) src/ship.$(O32) src/shot.$(O32) src/frag.$(O32) src/bonus.$(O32) \
+	src/foe.$(O32) src/foecommand.$(O32) src/barragemanager.$(O32) src/attractmanager.$(O32) \
+	src/background.$(O32) src/letterrender.$(O32) \
+	src/screen.$(O32) src/clrtbl.$(O32) src/vector.$(O32) src/degutil.$(O32) src/rand.$(O32) src/soundmanager.$(O32) \
+	src/nativeclient.$(O32)
 
-OBJS_64 =	$(NAME).$(O64) ship.$(O64) shot.$(O64) frag.$(O64) bonus.$(O64) \
-	foe.$(O64) foecommand.$(O64) barragemanager.$(O64) attractmanager.$(O64) \
-	background.$(O64) letterrender.$(O64) \
-	screen.$(O64) clrtbl.$(O64) vector.$(O64) degutil.$(O64) rand.$(O64) soundmanager.$(O64) \
-	nativeclient.$(O64)
+OBJS_64 =	src/$(NAME).$(O64) src/ship.$(O64) src/shot.$(O64) src/frag.$(O64) src/bonus.$(O64) \
+	src/foe.$(O64) src/foecommand.$(O64) src/barragemanager.$(O64) src/attractmanager.$(O64) \
+	src/background.$(O64) src/letterrender.$(O64) \
+	src/screen.$(O64) src/clrtbl.$(O64) src/vector.$(O64) src/degutil.$(O64) src/rand.$(O64) src/soundmanager.$(O64) \
+	src/nativeclient.$(O64)
 
 $(NEXE_32): $(OBJS_32) 
 	$(LINKER) $(NEXE32_CFLAGS) $(CFLAGS) -o $(NEXE_32) $(OBJS_32) $(NEXE32_LDFLAGS) $(LDFLAGS) $(NEXE32_LIBS) $(LIBS) 
@@ -54,7 +54,7 @@ $(NEXE_64): $(OBJS_64)
 	$(LINKER) $(NEXE64_CFLAGS) $(CFLAGS) -o $(NEXE_64) $(OBJS_64) $(NEXE64_LDFLAGS) $(LDFLAGS) $(NEXE64_LIBS) $(LIBS)
 
 clean:
-	$(RM) $(NEXE_32) $(NEXE_64) *.$(O32) *.$(O64)
+	$(RM) $(NEXE_32) $(NEXE_64) src/*.$(O32) src/*.$(O64)
 
 
 .SUFFIXES:	.c .cc .$(O32) .$(O64)

@@ -259,7 +259,7 @@ int interval = INTERVAL_BASE;
 int tick = 0;
 static int pPrsd = 1;
 
-int main(int argc, char *argv[]) {
+int noiz2sa_main(int argc, char *argv[]) {
   int done = 0;
   long prvTickCount = 0;
   int i;

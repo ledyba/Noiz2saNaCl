@@ -16,8 +16,10 @@ CXX    = $(NACL_GCC_PREFIX)g++ -c
 
 O32      = o32
 O64      = o64
-NEXE_64        = $(NAME)_64.nexe
-NEXE_32        = $(NAME)_32.nexe
+NEXE_64        = ../$(NAME)_64.nexe
+NEXE_32        = ../$(NAME)_32.nexe
+
+all: $(NEXE_64) $(NEXE_32)
 
 NEXE32_CFLAGS = `$(NACL_TOOLCHAIN_ROOT32)/bin/sdl-config --cflags` -m32
 NEXE64_CFLAGS = `$(NACL_TOOLCHAIN_ROOT64)/bin/sdl-config --cflags` -m64
@@ -38,11 +40,13 @@ OBJS_32 =	$(NAME).$(O32) ship.$(O32) shot.$(O32) frag.$(O32) bonus.$(O32) \
 	foe.$(O32) foecommand.$(O32) barragemanager.$(O32) attractmanager.$(O32) \
 	background.$(O32) letterrender.$(O32) \
 	screen.$(O32) clrtbl.$(O32) vector.$(O32) degutil.$(O32) rand.$(O32) soundmanager.$(O32) \
+	nativeclient.$(O32)
 
 OBJS_64 =	$(NAME).$(O64) ship.$(O64) shot.$(O64) frag.$(O64) bonus.$(O64) \
 	foe.$(O64) foecommand.$(O64) barragemanager.$(O64) attractmanager.$(O64) \
 	background.$(O64) letterrender.$(O64) \
 	screen.$(O64) clrtbl.$(O64) vector.$(O64) degutil.$(O64) rand.$(O64) soundmanager.$(O64) \
+	nativeclient.$(O64)
 
 $(NEXE_32): $(OBJS_32) 
 	$(LINKER) $(NEXE32_CFLAGS) $(CFLAGS) -o $(NEXE_32) $(OBJS_32) $(NEXE32_LDFLAGS) $(LDFLAGS) $(NEXE32_LIBS) $(LIBS) 
@@ -52,7 +56,6 @@ $(NEXE_64): $(OBJS_64)
 clean:
 	$(RM) $(NEXE_32) $(NEXE_64) *.$(O32) *.$(O64)
 
-default: $(NEXE_32) $(NEXE_64)
 
 .SUFFIXES:	.c .cc .$(O32) .$(O64)
 .c.$(O32):
@@ -64,3 +67,4 @@ default: $(NEXE_32) $(NEXE_64)
 	$(CC) $(NEXE64_CFLAGS) $(CFLAGS) $(CPPFLAGS) $< -o $@
 .cc.$(O64):
 	$(CXX) $(NEXE64_CFLAGS) $(CXXFLAGS) $(CPPFLAGS) $< -o $@
+

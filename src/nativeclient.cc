@@ -34,7 +34,7 @@ class GameInstance : public pp::Instance {
     : pp::Instance(instance),
       game_main_thread_(NULL),
       num_changed_view_(0),
-      width_(0), height_(0) {
+      width_(640), height_(480) {
     // Game requires mouse and keyboard events; add more if necessary.
     RequestInputEvents(PP_INPUTEVENT_CLASS_MOUSE|
                        PP_INPUTEVENT_CLASS_KEYBOARD);

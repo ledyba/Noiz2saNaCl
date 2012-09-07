@@ -1,6 +1,8 @@
 # Noiz2sa makefile(MinGW 2.0.0)
 # $Id: Makefile,v 1.4 2003/08/10 09:00:05 kenta Exp $
 
+BULLETML=
+
 NAME   = noiz2sa
 O      = o
 RM     = rm -f
@@ -10,12 +12,12 @@ CXX    = g++
 PROG        = $(NAME).exe
 
 DEFAULT_CFLAGS = `sdl-config --cflags`
-LDFLAGS        = `sdl-config --libs` -L. -lmingw32 -lmingwex -lSDL_mixer -lbulletml -mwindows -lstdc++
+LDFLAGS        = `sdl-config --libs` -L. -L$(BULLETML) -lmingw32 -lmingwex -lSDL_mixer -lbulletml -mwindows -lstdc++
 
 MORE_CFLAGS = -O3
 
 CFLAGS  = $(DEFAULT_CFLAGS) $(MORE_CFLAGS)
-CPPFLAGS  = $(DEFAULT_CFLAGS) $(MORE_CFLAGS) -I./bulletml/
+CPPFLAGS  = $(DEFAULT_CFLAGS) $(MORE_CFLAGS) -I. -I$(BULLETML) -I$(BULLETML)/src
 
 OBJS =	$(NAME).$(O) ship.$(O) shot.$(O) frag.$(O) bonus.$(O) \
 	foe.$(O) foecommand.$(O) barragemanager.$(O) attractmanager.$(O) \

@@ -19,11 +19,16 @@ TINYXML_USE_STL := NO
 
 #****************************************************************************
 
-CC     := gcc
-CXX    := g++
-LD     := g++
-AR     := ar rc
-RANLIB := ranlib
+NACL_TOOLCHAIN_ROOT=$(NACL_SDK_ROOT)/toolchain/linux_x86_newlib
+NACL_TOOLCHAIN_ROOT32=$(NACL_TOOLCHAIN_ROOT)/i686-nacl/usr
+NACL_TOOLCHAIN_ROOT64=$(NACL_TOOLCHAIN_ROOT)/x86_64-nacl/usr
+NACL_GCC_PREFIX=$(NACL_TOOLCHAIN_ROOT)/bin/x86_64-nacl-
+
+CC     = $(NACL_GCC_PREFIX)gcc
+LD     = $(NACL_GCC_PREFIX)g++
+CXX    = $(NACL_GCC_PREFIX)g++
+AR     = $(NACL_GCC_PREFIX)ar
+RANLIB = $(NACL_GCC_PREFIX)ranlib
 
 DEBUG_CFLAGS     := -Wall -Wno-format -g -DDEBUG
 RELEASE_CFLAGS   := -Wall -Wno-unknown-pragmas -Wno-format -O3
@@ -78,15 +83,6 @@ CFLAGS   := ${CFLAGS}   ${DEFS}
 CXXFLAGS := ${CXXFLAGS} ${DEFS}
 
 #****************************************************************************
-# Targets of the build
-#****************************************************************************
-
-OUTPUT := xmltest
-
-all: ${OUTPUT}
-
-
-#****************************************************************************
 # Source files
 #****************************************************************************
 
@@ -95,28 +91,40 @@ SRCS := tinyxml.cpp tinyxmlparser.cpp xmltest.cpp tinyxmlerror.cpp tinystr.cpp
 # Add on the sources for libraries
 SRCS := ${SRCS}
 
-OBJS := $(addsuffix .o,$(basename ${SRCS}))
+OBJS32 := $(addsuffix .o32,$(basename ${SRCS}))
+OBJS64 := $(addsuffix .o64,$(basename ${SRCS}))
+#****************************************************************************
+# Targets of the build
+#****************************************************************************
+
+all: $(OBJS32) $(OBJS64)
+
 
 #****************************************************************************
 # Output
 #****************************************************************************
 
-${OUTPUT}: ${OBJS}
-	${LD} -o $@ ${LDFLAGS} ${OBJS} ${LIBS} ${EXTRA_LIBS}
+${OUTPUT32}: ${OBJS32}
+	${LD} -o $@ ${LDFLAGS} ${OBJS32} ${LIBS} ${EXTRA_LIBS}
+${OUTPUT64}: ${OBJS64}
+	${LD} -o $@ ${LDFLAGS} ${OBJS64} ${LIBS} ${EXTRA_LIBS}
 
 #****************************************************************************
 # common rules
 #****************************************************************************
 
 # Rules for compiling source files to object files
-%.o : %.cpp
-	${CXX} -c ${CXXFLAGS} ${INCS} $< -o $@
+%.o32 : %.cpp
+	${CXX} -c -m32 ${CXXFLAGS} ${INCS} $< -o $@
 
-%.o : %.c
-	${CC} -c ${CFLAGS} ${INCS} $< -o $@
+%.o32 : %.c
+	${CC} -c -m32 ${CFLAGS} ${INCS} $< -o $@
 
-dist:
-	bash makedistlinux
+%.o64 : %.cpp
+	${CXX} -c -m64 ${CXXFLAGS} ${INCS} $< -o $@
+
+%.o64 : %.c
+	${CC} -c -m64 ${CFLAGS} ${INCS} $< -o $@
 
 clean:
 	-rm -f core ${OBJS} ${OUTPUT}
@@ -124,7 +132,12 @@ clean:
 depend:
 	#makedepend ${INCS} ${SRCS}
 
-tinyxml.o: tinyxml.h tinystr.h
-tinyxmlparser.o: tinyxml.h tinystr.h
-xmltest.o: tinyxml.h tinystr.h
-tinyxmlerror.o: tinyxml.h tinystr.h
+tinyxml.o32: tinyxml.h tinystr.h
+tinyxmlparser.o32: tinyxml.h tinystr.h
+xmltest.o32: tinyxml.h tinystr.h
+tinyxmlerror.o32: tinyxml.h tinystr.h
+
+tinyxml.o64: tinyxml.h tinystr.h
+tinyxmlparser.o64: tinyxml.h tinystr.h
+xmltest.o64: tinyxml.h tinystr.h
+tinyxmlerror.o64: tinyxml.h tinystr.h

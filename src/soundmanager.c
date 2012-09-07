@@ -18,6 +18,8 @@
 #include "SDL_mixer.h"
 #include "soundmanager.h"
 
+#include "../storage/storage.h"
+
 static int useAudio = 0;
 
 #define MUSIC_NUM 7
@@ -64,7 +66,7 @@ static void loadSounds() {
   for ( i=0 ; i<MUSIC_NUM ; i++ ) {
     strcpy(name, "sounds/");
     strcat(name, musicFileName[i]);
-    if ( NULL == (music[i] = Mix_LoadMUS(name)) ) {
+    if ( NULL == (music[i] = Mix_LoadMUS_RW(fopenSDL_RWops(name))) ) {
       fprintf(stderr, "Couldn't load: %s\n", name);
       useAudio = 0;
       return;
@@ -73,7 +75,7 @@ static void loadSounds() {
   for ( i=0 ; i<CHUNK_NUM ; i++ ) {
     strcpy(name, "sounds/");
     strcat(name, chunkFileName[i]);
-    if ( NULL == (chunk[i] = Mix_LoadWAV(name)) ) {
+    if ( NULL == (chunk[i] = Mix_LoadWAV_RW(fopenSDL_RWops(name), 1)) ) {
       fprintf(stderr, "Couldn't load: %s\n", name);
       useAudio = 0;
       return;

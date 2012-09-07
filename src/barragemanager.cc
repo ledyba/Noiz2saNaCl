@@ -26,6 +26,8 @@ extern "C" {
 #include "barragemanager.h"
 #include "foe.h"
 
+#include "../storage/storage.h"
+
 #define BARRAGE_PATTERN_MAX 32
 
 static Barrage barragePattern[BARRAGE_TYPE_NUM][BARRAGE_PATTERN_MAX];

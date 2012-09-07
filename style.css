@@ -306,15 +306,9 @@ body {
 #wrapper {
 	margin-left: auto;
 	margin-right: auto;
-	width: 600px;
+	width: 800px;
 	padding: 1em 50px 1em 50px;
 	background-color: #ffffff;
-}
-
-#rom_sel {
-	margin: 1em auto 1em auto;
-	width: 280px;
-	display: block;
 }
 
 #content{
@@ -324,7 +318,7 @@ body {
 .control_box{
 	text-align: center;
 	margin: 1em auto 1em auto;
-	width: 320px;
+	width: 600px;
 }
 
 .control_box input{
@@ -339,14 +333,14 @@ hr {
     border-top: #999999 dotted medium;
 }
 
-#nes_screen {
+#game_screen {
 	margin: 2em auto 2em auto;
 	width: 640px;
 	height: 480px;
 	border: #999999 dotted thick;
 }
 
-.nes_screen_wrapper {
+.game_screen_wrapper {
 	padding: 0;
 	text-align: center;
 }

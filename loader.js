@@ -26,16 +26,16 @@ noiz2sa.handleMessage = function(msg){
 		// Googleのサンプルでもそうなっております
 		var embed = $('<embed>');
 		embed.attr('name','nacl_module');
-		embed.attr('id', 'nes_nacl');
+		embed.attr('id', 'noiz2sa_nacl');
 		embed.attr('width', '640');
 		embed.attr('height', '480');
 		embed.attr('type', 'application/x-nacl');
 		embed.attr('src', 'noiz2sa.nmf');
-		$('#nes_screen').append(embed);
+		$('#game_screen').append(embed);
 		
 		// モジュールがロードされた時の処理
-		$("#nes_screen")[0].addEventListener('load', noiz2sa.moduleLoaded, true);
-		$("#nes_screen")[0].addEventListener('message', noiz2sa.handleMessage, true);
+		$("#game_screen")[0].addEventListener('load', noiz2sa.moduleLoaded, true);
+		$("#game_screen")[0].addEventListener('message', noiz2sa.handleMessage, true);
 		
 	});
 }());

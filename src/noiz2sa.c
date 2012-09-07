@@ -268,14 +268,21 @@ int noiz2sa_main(int argc, char *argv[]) {
   long nowTick;
   int frame;
 
+  printf("parsing args...\n");
   parseArgs(argc, argv);
 
+  printf("init DegUtil...\n");
   initDegutil();
+  printf("init SDL...\n");
   initSDL(windowMode);
+  printf("init sound...\n");
   if ( !noSound ) initSound();
+  printf("init First...\n");
   initFirst();
+  printf("init Title...\n");
   initTitle();
 
+  printf("start event loop...\n");
   while ( !done ) {
     SDL_PollEvent(&event);
     keys = SDL_GetKeyState(NULL);

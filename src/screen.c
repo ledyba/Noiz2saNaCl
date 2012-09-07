@@ -23,6 +23,8 @@
 #include "letterrender.h"
 #include "attractmanager.h"
 
+#include "../storage/storage.h"
+
 int windowMode = 0;
 int brightness = DEFAULT_BRIGHTNESS;
 
@@ -57,7 +59,7 @@ static void loadSprites() {
   for ( i=0 ; i<SPRITE_NUM ; i++ ) {
     strcpy(name, "images/");
     strcat(name, spriteFile[i]);
-    img = SDL_LoadBMP(name);
+    img = SDL_LoadBMP_RW(fopenSDL_RWops(name), 1);
     if ( img == NULL ) {
       fprintf(stderr, "Unable to load: %s\n", name);
       SDL_Quit();

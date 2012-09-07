@@ -2,6 +2,7 @@
 /*  A Bison parser, made from calc.yy
     by GNU Bison version 1.28  */
 
+#include <string.h>
 #define YYBISON 1  /* Identify Bison output.  */
 
 #define	NUM	257

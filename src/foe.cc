@@ -209,8 +209,8 @@ void moveFoes() {
 	continue;
       }
     }
-    mx =  ((sctbl[fe->d]*fe->spd)>>8) + fe->vel.x;
-    my = -((sctbl[fe->d+256]*fe->spd)>>8) + fe->vel.y;
+    mx =  ((sctbl[fe->d & 1023]*fe->spd)>>8) + fe->vel.x;
+    my = -((sctbl[(fe->d+256) & 1023]*fe->spd)>>8) + fe->vel.y;
     fe->pos.x += mx;
     fe->pos.y += my;
     fe->mv.x = mx;

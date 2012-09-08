@@ -29,7 +29,7 @@ FORCE:
 	
 DELBIN:
 	rm -f *.nexe
-	
+
 NEXE32_CFLAGS = `$(NACL_TOOLCHAIN_ROOT32)/bin/sdl-config --cflags` -m32
 NEXE64_CFLAGS = `$(NACL_TOOLCHAIN_ROOT64)/bin/sdl-config --cflags` -m64
 NEXE32_LDFLAGS = `$(NACL_TOOLCHAIN_ROOT32)/bin/sdl-config --libs`
@@ -37,12 +37,12 @@ NEXE64_LDFLAGS = `$(NACL_TOOLCHAIN_ROOT64)/bin/sdl-config --libs`
 NEXE32_LIBS=-lbulletml32
 NEXE64_LIBS=-lbulletml64
 
-MORE_CFLAGS = -O3 -std=gnu99
+MORE_CFLAGS = -O3 -std=gnu99 -g
 
 CFLAGS  = $(MORE_CFLAGS)
 CPPFLAGS  = $(MORE_CFLAGS) -I./src -I$(BULLETML) -I$(BULLETML)/src
 
-LDFLAGS        =  -L. -L$(BULLETML)/src
+LDFLAGS        =  -L. -L$(BULLETML)/src -g
 LIBS=-lSDL_mixer -lSDL -lnosys -lvorbis -lvorbisfile -lvorbisenc -lvorbis -logg -lstdc++ -lppapi -lppapi_cpp -lm
 
 storage/file_data.c: packFile.py

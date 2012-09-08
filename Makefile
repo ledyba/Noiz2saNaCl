@@ -52,7 +52,7 @@ OBJS_32 =	src/$(NAME).$(O32) src/ship.$(O32) src/shot.$(O32) src/frag.$(O32) src
 	src/foe.$(O32) src/foecommand.$(O32) src/barragemanager.$(O32) src/attractmanager.$(O32) \
 	src/background.$(O32) src/letterrender.$(O32) \
 	src/screen.$(O32) src/clrtbl.$(O32) src/vector.$(O32) src/degutil.$(O32) src/rand.$(O32) src/soundmanager.$(O32) \
-	src/nativeclient.$(O32) \
+	nacl/entrypoint.$(O32)\
 	nacl/storage.$(O32) \
 	nacl/file_data.$(O32)
 
@@ -60,7 +60,7 @@ OBJS_64 =	src/$(NAME).$(O64) src/ship.$(O64) src/shot.$(O64) src/frag.$(O64) src
 	src/foe.$(O64) src/foecommand.$(O64) src/barragemanager.$(O64) src/attractmanager.$(O64) \
 	src/background.$(O64) src/letterrender.$(O64) \
 	src/screen.$(O64) src/clrtbl.$(O64) src/vector.$(O64) src/degutil.$(O64) src/rand.$(O64) src/soundmanager.$(O64) \
-	src/nativeclient.$(O64)\
+	nacl/entrypoint.$(O64)\
 	nacl/storage.$(O64) \
 	nacl/file_data.$(O64)
 

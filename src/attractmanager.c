@@ -22,7 +22,7 @@
 #include "soundmanager.h"
 #include "degutil.h"
 
-#include "../storage/storage.h"
+#include "../nacl/storage.h"
 int score;
 static int nextExtend, neAdd;
 static int dsc;

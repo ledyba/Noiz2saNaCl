@@ -53,16 +53,16 @@ OBJS_32 =	src/$(NAME).$(O32) src/ship.$(O32) src/shot.$(O32) src/frag.$(O32) src
 	src/background.$(O32) src/letterrender.$(O32) \
 	src/screen.$(O32) src/clrtbl.$(O32) src/vector.$(O32) src/degutil.$(O32) src/rand.$(O32) src/soundmanager.$(O32) \
 	src/nativeclient.$(O32) \
-	storage/storage.$(O32) \
-	storage/file_data.$(O32)
+	nacl/storage.$(O32) \
+	nacl/file_data.$(O32)
 
 OBJS_64 =	src/$(NAME).$(O64) src/ship.$(O64) src/shot.$(O64) src/frag.$(O64) src/bonus.$(O64) \
 	src/foe.$(O64) src/foecommand.$(O64) src/barragemanager.$(O64) src/attractmanager.$(O64) \
 	src/background.$(O64) src/letterrender.$(O64) \
 	src/screen.$(O64) src/clrtbl.$(O64) src/vector.$(O64) src/degutil.$(O64) src/rand.$(O64) src/soundmanager.$(O64) \
 	src/nativeclient.$(O64)\
-	storage/storage.$(O64) \
-	storage/file_data.$(O64)
+	nacl/storage.$(O64) \
+	nacl/file_data.$(O64)
 
 $(NEXE_32): $(OBJS_32) 
 	$(LINKER) $(NEXE32_CFLAGS) $(CFLAGS) -o $(NEXE_32) $(OBJS_32) $(NEXE32_LDFLAGS) $(LDFLAGS) $(NEXE32_LIBS) $(LIBS) 
@@ -70,6 +70,7 @@ $(NEXE_64): $(OBJS_64)
 	$(LINKER) $(NEXE64_CFLAGS) $(CFLAGS) -o $(NEXE_64) $(OBJS_64) $(NEXE64_LDFLAGS) $(LDFLAGS) $(NEXE64_LIBS) $(LIBS)
 
 clean:
+	make -C bulletml/src/ clean
 	$(RM) $(NEXE_32) $(NEXE_64) src/*.$(O32) src/*.$(O64)
 
 

@@ -26,7 +26,7 @@ extern "C" {
 #include "barragemanager.h"
 #include "foe.h"
 
-#include "../storage/storage.h"
+#include "../nacl/storage.h"
 
 #define BARRAGE_PATTERN_MAX 32
 

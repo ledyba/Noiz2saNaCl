@@ -23,7 +23,7 @@
 #include "letterrender.h"
 #include "attractmanager.h"
 
-#include "../storage/storage.h"
+#include "../nacl/storage.h"
 
 int windowMode = 0;
 int brightness = DEFAULT_BRIGHTNESS;

@@ -18,7 +18,7 @@
 #include "SDL_mixer.h"
 #include "soundmanager.h"
 
-#include "../storage/storage.h"
+#include "../nacl/storage.h"
 
 static int useAudio = 0;
 

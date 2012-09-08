@@ -32,7 +32,7 @@ distribution.
 #include "tinyxml.h"
 
 #include <dirent.h>
-#include "../../../storage/storage.h"
+#include "../../../nacl/storage.h"
 
 FILE* TiXmlFOpen( const char* filename, const char* mode );
 

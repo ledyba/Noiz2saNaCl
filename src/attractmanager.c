@@ -302,7 +302,7 @@ void moveTitleMenu() {
   }
   if ( mnp && (btn & PAD_BUTTON1) ) {
     if ( slcStg == STAGE_NUM+ENDLESS_STAGE_NUM ) {
-      quitLast();
+      //quitLast();
       return;
     }
     hiScore.stage = slcStg;

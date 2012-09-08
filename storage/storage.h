@@ -87,6 +87,7 @@ extern int nacl_fflush(FILE *stream);
 
 extern int nacl_fputc(char c, FILE *stream);
 
+#include <dirent.h>
 #define opendir(x) nacl_opendir(x)
 #define readdir(x) nacl_readdir(x)
 #define closedir(x) nacl_closedir(x)

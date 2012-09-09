@@ -1,3 +1,7 @@
+これは、ABA Gamesさん作の「Noiz2sa」をChromeのNative Clientとして移植したものです。
+------------------------------
+オリジナルのReadme
+------------------------------
 Noiz2sa  readme.txt
 for Windows98/2000/XP
 ver. 0.51

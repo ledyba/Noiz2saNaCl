@@ -4,6 +4,7 @@
 	"version": "0.51",
 	"description": "弾幕の海にたゆたう、アブストラクトシューティングNoiz2sa。",
 	"icons": {
+		"16": "icon16.png",
 		"48": "icon48.png",
 		"128": "icon128.png"
 	},

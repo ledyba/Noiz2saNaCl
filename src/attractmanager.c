@@ -212,7 +212,7 @@ void drawRPanel() {
 }
 
 #define STG_BOX_SIZE 40
-#define STG_BOX_NUM 15
+#define STG_BOX_NUM 14
 
 static int stageX[STG_BOX_NUM], stageY[STG_BOX_NUM];
 
@@ -266,7 +266,7 @@ void drawTitle() {
   }
 }
 
-static int stgMv[STAGE_NUM+ENDLESS_STAGE_NUM+1][4] = {
+static int stgMv[STAGE_NUM+ENDLESS_STAGE_NUM][4] = {
   {0, 0, 1, 0}, 
   {-1, 1, 2, 0}, {0, 0, 2, -1}, 
   {-2, 1, 3, 0}, {-2, 1, 3, -1}, {0, 0, 3, -1},

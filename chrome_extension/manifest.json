@@ -1,0 +1,25 @@
+{
+	"manifest_version": 2,
+	"name": "noiz2sa",
+	"version": "0.51",
+	"description": "弾幕の海にたゆたう、アブストラクトシューティングNoiz2sa。",
+	"icons": {
+		"48": "icon48.png",
+		"128": "icon128.png"
+	},
+	"app": {
+		"launch": {
+			"local_path": "index.html"
+		}
+	},
+	"web_accessible_resources": [
+		"jquery-1.8.0.min.js",
+		"loader.js",
+		"style.css"
+	],
+	"nacl_modules": [{
+		"path": "noiz2sa.nmf",
+		"mime_type": "application/vnd.oasis.opendocument.spreadsheet"
+	}]
+}
+

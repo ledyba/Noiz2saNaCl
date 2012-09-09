@@ -271,8 +271,7 @@ static int stgMv[STAGE_NUM+ENDLESS_STAGE_NUM+1][4] = {
   {-1, 1, 2, 0}, {0, 0, 2, -1}, 
   {-2, 1, 3, 0}, {-2, 1, 3, -1}, {0, 0, 3, -1},
   {-3, 1, 4, 0}, {-3, 1, 4, -1}, {-3, 1, 4, -1}, {0, 0, 3, -1},
-  {-4, 1, 4, 0}, {-4, 1, 3, -1}, {-4, 1, 2, -1},                {0, 0, 1, -1},
-  {-4, 0, 0, 0},
+  {-4, 1, 0, 0}, {-4, 1, 0, -1}, {-4, 1, 0, -1},                {0, 0, 0, -1}
 };
 
 void moveTitleMenu() {
@@ -301,10 +300,6 @@ void moveTitleMenu() {
     titleCnt = 16;
   }
   if ( mnp && (btn & PAD_BUTTON1) ) {
-    if ( slcStg == STAGE_NUM+ENDLESS_STAGE_NUM ) {
-      //quitLast();
-      return;
-    }
     hiScore.stage = slcStg;
     initGame(slcStg);
   }
@@ -318,7 +313,6 @@ void drawTitleMenu() {
   char *hardChr = "HARD";
   char *extChr = "EXTREME";
   char *insChr = "INSANE";
-  char *quitChr = "QUIT";
   for ( i=0 ; i<STG_BOX_NUM ; i++ ) {
     if ( i == slcStg ) {
       int sz = STG_BOX_SIZE+6+sctbl[(titleCnt*16)&(DIV-1)]/24;
@@ -342,9 +336,6 @@ void drawTitleMenu() {
 	case 13:
 	  drawStringBuf(endlessChr, 56, 80, 12, 2, 16*1-14, 16*1-2, buf, 0);
 	  drawStringBuf(insChr, 210, 80, 12, 2, 16*1-14, 16*1-2, buf, 0);
-	  break;
-	case 14:
-	  drawStringBuf(quitChr, 230, 80, 12, 2, 16*1-14, 16*1-2, buf, 0);
 	  break;
 	}
       }
@@ -374,9 +365,6 @@ void drawTitleMenu() {
       case 13:
 	drawLetterBuf('E'-'A'+10, stageX[i]-8, stageY[i], 12, 2, 16*1-16, 16*1-1, buf, 0);
 	drawLetterBuf('I'-'A'+10, stageX[i]+8, stageY[i], 12, 2, 16*1-16, 16*1-1, buf, 0);
-	break;
-      case 14:
-	drawLetterBuf('Q'-'A'+10, stageX[i], stageY[i], 12, 2, 16*1-16, 16*1-1, buf, 0);
 	break;
       }
     }

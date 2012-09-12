@@ -1,4 +1,6 @@
 これは、ABA Gamesさん作の「Noiz2sa」をChromeのNative Clientとして移植したものです。
+現在Chrome Web Storeで公開中
+https://chrome.google.com/webstore/detail/phphhhdfnkpdmlhppcbghaoahiflnjfa
 ------------------------------
 オリジナルのReadme
 ------------------------------
